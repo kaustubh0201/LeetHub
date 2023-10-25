@@ -12,25 +12,18 @@ class Solution {
     int canReach(int A[], int N) {
         // code here
         
-        A[N - 1] = -1;
+        int last = N - 1;
         
         for (int i = N - 2; i >= 0; i--) {
             
             int end = i + A[i];
             
-            if (end >= N)
-                end = N - 1;
-            
-            for (int j = i + 1; j <= end; j++) {
-                
-                if (A[j] == -1) {
-                    A[i] = -1;
-                    break;
-                }
+            if (end >= last) {
+                last = i;
             }
         }
         
-        if (A[0] == -1)
+        if (last == 0)
             return 1;
             
         return 0;
